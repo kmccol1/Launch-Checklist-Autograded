@@ -66,13 +66,13 @@ function validateInput(testInput)
     }
     else
     {
-        document.querySelector("#launchStatus").textContent = "Shuttle is ready for launch!";
+        document.querySelector("#launchStatus").textContent = "Shuttle is Ready for Launch!";
         document.querySelector("#launchStatus").style.color = "green";
     }
     const fuelStatusElement = document.querySelector('ol #fuelStatus');
-    fuelLevel < 10000 ? fuelStatusElement.textContent = "Fuel level too low for launch" :fuelStatusElement.textContent = "Fuel level is high enough for launch";
+    fuelLevel < 10000 ? fuelStatusElement.textContent = "Fuel level too low for launch" :fuelStatusElement.textContent = "Fuel level high enough for launch";
     const cargoStatusElement = document.querySelector('ol #cargoStatus');
-    cargoLevel > 10000 ? cargoStatusElement.textContent = "Cargo mass too high for launch" :cargoStatusElement.textContent = "Cargo mass low enough for launch";
+    cargoLevel > 10000 ? cargoStatusElement.textContent = "Cargo mass too heavy for launch" :cargoStatusElement.textContent = "Cargo mass low enough for launch";
 
     // event.preventDefault();
     return result;
