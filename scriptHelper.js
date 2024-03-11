@@ -4,18 +4,18 @@ require('cross-fetch/polyfill');
 
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-    // Here is the HTML formatting for our mission target div.
-    /*
-                 <h2>Mission Destination</h2>
+    // let myDiv = document.getElementById('missionTarget');
+    const myDiv = document.querySelector('#missionTarget');
+    myDiv.innerHTML =
+                 `<h2>Mission Destination</h2>
                  <ol>
-                     <li>Name: </li>
-                     <li>Diameter: </li>
+                     <li>Name: ${name}</li>
+                     <li>Diameter: ${diameter}</li>
                      <li>Star: ${star}</li>
-                     <li>Distance from Earth: </li>
-                     <li>Number of Moons: </li>
+                     <li>Distance from Earth: ${distance}</li>
+                     <li>Number of Moons: ${moons}</li>
                  </ol>
-                 <img src="">
-    */
+                 <img src=${imageUrl}>`;
  }
  
 function validateInput(testInput)
@@ -59,8 +59,8 @@ function validateInput(testInput)
     if ( (fuelLevel < 10000) || (cargoLevel > 10000))
     {
         myDiv.style.visibility = 'visible';
-        document.querySelector("h2").textContent = "Shuttle not ready for launch";
-        document.querySelector("h2").style.color = "red";
+        document.querySelector("#launchStatus").textContent = "Shuttle not ready for launch";
+        document.querySelector("#launchStatus").style.color = "red";
         const fuelStatusElement = document.querySelector('ol #fuelStatus');
         fuelLevel < 10000 ? fuelStatusElement.textContent = "Fuel level not high enough for launch" :fuelStatusElement.textContent = "Fuel level is high enough for launch";
         const cargoStatusElement = document.querySelector('ol #cargoStatus');
@@ -69,27 +69,32 @@ function validateInput(testInput)
     }
     else
     {
-        document.querySelector("h2").textContent = "Shuttle is ready for launch";
-        document.querySelector("h2").style.color = "green";
+        document.querySelector("#launchStatus").textContent = "Shuttle is ready for launch";
+        document.querySelector("#launchStatus").style.color = "green";
     }
 
     event.preventDefault();
     return result;
  }
  //task 3 functions commented out below
- /*
+
  async function myFetch() {
      let planetsReturned;
  
-     planetsReturned = await fetch().then( function(response) {
+     planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then( function(response) {
+         return response.json();
          });
  
      return planetsReturned;
  }
  
- function pickPlanet(planets) {
+ function pickPlanet(planets)
+ {
+     let randIndex = Math.floor(Math.random()*planets.length);
+     let randPlanet = planets[randIndex];
+     return randPlanet;
  }
- */
+
  module.exports.addDestinationInfo = addDestinationInfo;
  module.exports.validateInput = validateInput;
  module.exports.formSubmission = formSubmission;
