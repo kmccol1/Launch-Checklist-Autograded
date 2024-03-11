@@ -24,8 +24,7 @@ window.addEventListener("load", function() {
         const cargoInputField = document.querySelector('input[name="cargoMass"]');
         const cargo = cargoInputField.value;
         formSubmission(document, myList, pilotName, copilotName, fuel, cargo);
-        form.submit();
-        // event.preventDefault();
+        event.preventDefault();
     });
 
     let listedPlanets;

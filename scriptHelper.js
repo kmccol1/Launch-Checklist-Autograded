@@ -40,7 +40,7 @@ function validateInput(testInput)
  {
      //validateInput(pilot)...etc....
      let result = true;
-     if (validateInput(pilot) == 'Empty' || validateInput(copilot) == 'Empty' || validateInput(fuelLevel) == 'Not a Number' || validateInput(cargoLevel) == 'Not a Number')
+     if (validateInput(pilot) == 'Empty' || validateInput(copilot) == 'Empty' || validateInput(fuelLevel) == 'Not a Number' || validateInput(cargoLevel) == 'Not a Number' || cargoLevel == '')
      {
          alert("All fields are required!");
          event.preventDefault();
@@ -50,30 +50,31 @@ function validateInput(testInput)
     // let listDiv = myDiv.querySelectorAll('li');
     // listDiv.forEach(function(item){if(item.id=='pilotStatus'){item.textContent=`${pilot}`;}});
     const pilotStatusElement = document.querySelector('ol #pilotStatus');
-    pilotStatusElement.textContent = `${pilot} Ready`;
+    pilotStatusElement.textContent = `Pilot ${pilot} is ready for launch`;
 
     const copilotStatusElement = document.querySelector('ol #copilotStatus');
-    copilotStatusElement.textContent = `${copilot} Ready`;
+    copilotStatusElement.textContent = `Co-pilot ${copilot} is ready for launch`;
 
 
     if ( (fuelLevel < 10000) || (cargoLevel > 10000))
     {
         myDiv.style.visibility = 'visible';
-        document.querySelector("#launchStatus").textContent = "Shuttle not ready for launch";
+        document.querySelector("#launchStatus").textContent = "Shuttle Not Ready for Launch";
         document.querySelector("#launchStatus").style.color = "red";
-        const fuelStatusElement = document.querySelector('ol #fuelStatus');
-        fuelLevel < 10000 ? fuelStatusElement.textContent = "Fuel level not high enough for launch" :fuelStatusElement.textContent = "Fuel level is high enough for launch";
-        const cargoStatusElement = document.querySelector('ol #cargoStatus');
-        cargoLevel > 10000 ? cargoStatusElement.textContent = "Cargo mass too high for launch" :cargoStatusElement.textContent = "Cargo mass is low enough for launch";
-        event.preventDefault();
+
+        //event.preventDefault();
     }
     else
     {
-        document.querySelector("#launchStatus").textContent = "Shuttle is ready for launch";
+        document.querySelector("#launchStatus").textContent = "Shuttle is ready for launch!";
         document.querySelector("#launchStatus").style.color = "green";
     }
+    const fuelStatusElement = document.querySelector('ol #fuelStatus');
+    fuelLevel < 10000 ? fuelStatusElement.textContent = "Fuel level too low for launch" :fuelStatusElement.textContent = "Fuel level is high enough for launch";
+    const cargoStatusElement = document.querySelector('ol #cargoStatus');
+    cargoLevel > 10000 ? cargoStatusElement.textContent = "Cargo mass too high for launch" :cargoStatusElement.textContent = "Cargo mass low enough for launch";
 
-    event.preventDefault();
+    // event.preventDefault();
     return result;
  }
  //task 3 functions commented out below
