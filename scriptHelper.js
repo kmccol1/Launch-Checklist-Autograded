@@ -1,8 +1,3 @@
-//import 'cross-fetch/polyfill';
-// Write your helper functions here!
-require('cross-fetch/polyfill');
-
-
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     // let myDiv = document.getElementById('missionTarget');
     const myDiv = document.querySelector('#missionTarget');
@@ -18,25 +13,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  <img src=${imageUrl}>`;
  }
  
-function validateInput(testInput)
-{
-    let result;
-    if(testInput === "")
-    {
-        result = 'Empty';
-    }
-    else if (isNaN(testInput) == true)
-    {
-        result = "Not a Number";
-    }
-    else
-    {
-        result = "Is a Number";
-    }
-    return result;
-}
+
  
- function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel)
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel)
  {
      //validateInput(pilot)...etc....
      let result = true;
@@ -44,6 +23,7 @@ function validateInput(testInput)
      {
          alert("All fields are required!");
          event.preventDefault();
+         console.log("Alert");
      }
 
     let myDiv = document.getElementById('faultyItems');
@@ -78,8 +58,7 @@ function validateInput(testInput)
     return result;
  }
  //task 3 functions commented out below
-
- async function myFetch() {
+async function myFetch() {
      let planetsReturned;
  
      planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then( function(response) {
@@ -89,12 +68,30 @@ function validateInput(testInput)
      return planetsReturned;
  }
  
- function pickPlanet(planets)
+function pickPlanet(planets)
  {
      let randIndex = Math.floor(Math.random()*planets.length);
      let randPlanet = planets[randIndex];
      return randPlanet;
  }
+
+ function validateInput(testInput)
+{
+    let result;
+    if(testInput == "")
+    {
+        result = 'Empty';
+    }
+    else if (isNaN(testInput) == true)
+    {
+        result = "Not a Number";
+    }
+    else
+    {
+        result = "Is a Number";
+    }
+    return result;
+}
 
  module.exports.addDestinationInfo = addDestinationInfo;
  module.exports.validateInput = validateInput;

@@ -1,12 +1,20 @@
 // Write your JavaScript code here!
+//const myFunctions = require('./scriptHelper.js');
+// import {formSubmission} from '/scriptHelper.js';
+// import {myFetch} from '/scriptHelper.js';
+// import {pickPlanet} from '/scriptHelper.js';
+// import {addDestinationInfo} from '/scriptHelper.js';
 
 window.addEventListener("load", function() {
-    // event.preventDefault();
-    const submitButton = document.querySelector('#formSubmit');
+    //event.preventDefault();
+    console.log("Load");
     let myForm = document.querySelector("form");
-    submitButton.addEventListener("click", function(event)
+    // let myForm = document.querySelector("form");
+    myForm.addEventListener("submit", function(event)
     {
-        let myList = [0,0];
+        console.log("Submit");
+        //event.preventDefault();
+        let myList = document.getElementById("faultyItems");
         // let pilotName = document.querySelector("input[name=pilotName]");
         // let copilotName = document.querySelector("input[name=copilotName]");
         // let fuel = document.querySelector("input[name=fuelLevel]");
@@ -23,6 +31,7 @@ window.addEventListener("load", function() {
 
         const cargoInputField = document.querySelector('input[name="cargoMass"]');
         const cargo = cargoInputField.value;
+        //event.preventDefault();
         formSubmission(document, myList, pilotName, copilotName, fuel, cargo);
         event.preventDefault();
     });
